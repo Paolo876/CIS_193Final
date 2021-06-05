@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- google font api -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>CIS_193 Finals</title>
+</head>
+<body>
+    <!-- prompt for name -->
+    <div id="userInfo" class="row">
+        <p>Hello There, What is your name?</p>
+
+        <form action="" class="col s12" id="nameForm">
+            <p id="name404" class="red lighten-1"></p>
+
+            <div class="input-field inline">
+                <input type="text" id="nameInput" class="">
+                <button type="submit" class="waves-effect waves-light btn teal darken-3"><i class="material-icons">navigate_next</i>
+            </div>
+        </form>
+
+    </div>
+    <!-- prompt for city -->
+    <div id="userCity" class="row">
+        <p>What city are you in, <span id="citySpan"></span><br><small style="font-size: .25em;"><em>(This is for the weather service features.)</em></small></p>
+        <p id="city404" class="red lighten-1"></p>
+        <form class="col s12" id="cityForm">
+            <div class="input-field inline">
+                <input id="cityInput" type="text">
+                <!-- <input type="submit" class="waves-effect waves-light btn" value="Submit"> -->
+                <button type="submit" class="waves-effect waves-light btn teal darken-3"><i class="material-icons ">navigate_next</i>
+                </button>
+              </div>
+        </form>
+    </div>
+    <div id="content">
+        <div class="container">
+            <!-- navbar -->
+
+            <header id="navbar" >
+                <div id="settings">
+                    <span id="hideOnClick"></span>
+
+                    <a href="#" id="settingsBtn"><i class="material-icons">settings</i></a>
+                    <a class="btn-floating btn-small teal lighten-1 pulse" id='editorDone' style="display: none;"><i class="material-icons">edit</i></a>
+                    <a class="btn-floating btn-small teal darken-2" id='editorDefault' style="display: none;">Default</a>
+
+                </div>
+
+                <div id="settingsDrop">
+                    <a href="#" id="editorMode">Editor Mode</a>
+                    <div id="setBackground">
+                        <a href="#" id="setBG">Set Background as Default</a>
+                        <span id="setBGnotif"></span>
+                        <a href="#" id="removeBG">Generate Random Backgrounds</a>
+                    </div>
+                    <a href="#" id="settingsName">Change Name</a>
+                    <a href="#" id="settingsCity">Change City</a>
+                    <ul id="showHide"><span>Show/Hide Elements</span> 
+                        <li><a href="#" id="showHideTime" class="time ">Time</a></li>
+                        <li><a href="#" id="showHideGreeting" class="greet">Greeting</a></li>
+                        <li><a href="#" id="showHideWeather" class="weather">Weather</a></li>
+                        <li><a href="#" id="showHideSearch" class="search">Search Bar</a></li>
+                        <li><a href="#" id="showHideTodo" class="todo">Todo List</a></li>
+                        <li><a href="#" id="showHideLinks" class="links">Quick Links</a></li>
+                    </ul>
+                </div>
+            </header>
+
+
+             <!-- display time -->
+            <div id="timeElement" class="mainElements time">
+                <p><!-- time() goes here --></p>
+            </div>
+
+            <!-- greeting -->
+            <div id="greetElement" class="mainElements greet">
+                <p id="greetText"><!-- greeting() goes here --></p>
+            </div>
+
+            <!-- weather -->
+            <div id="weatherElement" class="mainElements weather">
+                <p id="weatherCity"><!-- greeting() goes here --></p>
+                <div id="weatherInfoBox">   
+
+                    <p id="weatherTemp"></p>
+                    <div id="weatherConditionBox">
+                        <img src="" alt="" id="weatherConditionImg">
+                        <p id="weatherConditionText"></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- search -->
+            <div id="searchElement" class="mainElements search">
+                <form action="" class="col s12" id="searchForm">
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input type="text" class="" placeholder="Google Search" id="searchInput">
+                          <i class="material-icons" id="searchIcon">search</i>
+                        </div>
+                      </div>
+                </form>
+            </div>
+
+            <!-- tasklist -->
+            <div id="taskElement" class="mainElements todo">
+                
+                <form action="" class="col s12" id="taskForm">
+                    
+                    <div class="row">
+                        
+                        <div class="input-field col s12">
+                            <h5>My Todo List</h5>
+                          <input type="text" class="" placeholder="Add Task" id="taskInput">
+                          <i class="material-icons" id="searchIcon">add</i>
+                        </div>
+                      </div>
+                </form>
+
+                <div class="card-action">
+                    <ul class="" id="taskList">
+                        <!-- <li class="listItem"><a  class="taskText">Task one test</a><a href="#" class="deleteTask secondary-content"><i class="material-icons">close</i></a></li> -->
+
+                    </ul>
+                </div>
+                <a href="#" id="clearBtn" class="waves-effect waves-light btn red">Clear All</a>
+            </div>
+
+            <!-- quickLinks -->
+            <div id="linksElement" class="mainElements links">
+                <ul id="links">
+                    <!-- <li><a href=""><i class="far fa-envelope"></i></a></li> -->
+                    <li><a href="https://mail.google.com/mail" id="gmail" ><i class="fab fa-google"></i></a></li>
+                    <li><a href="http://www.facebook.com"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="http://www.amazon.com"><i class="fab fa-amazon"></i></a></li>
+                    <li><a href="http://www.yahoo.com"><i class="fab fa-yahoo"></i></i></a></li>
+                    
+                    
+                </ul>
+            </div>
+
+
+
+
+            <!-- footer -->
+            <footer>
+                <!-- <div id="setBackground">
+                    <a href="#" id="setBG"><p>Set Background as Default</p></a>
+                    <a href="#" id="removeBG"><p>Generate new Background</p></a>
+                </div> -->
+                <p id="copyright">Designed and Developed by Paolo Bugarin. Copyright © 2021. All Rights Reserved.</p>
+            </footer>
+
+
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+</html>
