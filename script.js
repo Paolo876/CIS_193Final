@@ -548,6 +548,7 @@ function editorMode(){
         }
         elem.addEventListener('click', dragElement(elem));
         elem.addEventListener('click', function(e){
+            console.log(window.getComputedStyle(this).transform)
             if(e.target.className =='scaleUp' || e.target.classList.contains('fa-plus')){
                 if(this.style.transform.charAt(0) != 't'){
                     this.style.transform = 'translate(-50%, -50%) scale(1.1)';
@@ -617,13 +618,17 @@ function setElementPositions(){
     localSettings.forEach(function(localElem){
 
         elements.forEach(function(elem){
-            if(localElem.elementID == elem.id){
-                localElem.posX = elem.style.left;
-                localElem.posY = elem.style.top;
+            if(elem.style.display != 'none'){
+           
+                if(localElem.elementID == elem.id){
+                    localElem.posX = elem.style.left;
+                    localElem.posY = elem.style.top;
 
-                // height width
-                localElem.scale = window.getComputedStyle(elem).transform;
+                    // height width
+                    localElem.scale = window.getComputedStyle(elem).transform;
 
+
+                }
             }
         })
 

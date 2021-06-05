@@ -229,7 +229,8 @@ p#city404{
   position: absolute;
   top: 15%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.1);
+  /* transform: matrix(1.2, 0, 0, 1.2, -270, -72); */
+  transform: translate(-50%, -50%);
   width: 4.5em;
   line-height: 1.2em;
   color: white;
