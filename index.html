@@ -4,176 +4,253 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- materialize -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!--materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./styles/materialize.min.css"  media="screen,projection"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
-    <!-- google font api -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">    
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <!-- fontawesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="./styles/style.css">
     <title>CIS_193 Finals</title>
 </head>
+
 <body>
-    <!-- prompt for name -->
-    <div id="userInfo" class="row">
-        <p>Hello There, What is your name?</p>
-
-        <form action="" class="col s12" id="nameForm">
-            <p id="name404" class="red lighten-1"></p>
-
-            <div class="input-field inline">
-                <input type="text" id="nameInput" class="">
-                <button type="submit" class="waves-effect waves-light btn teal darken-3"><i class="material-icons">navigate_next</i>
-            </div>
-        </form>
-
-    </div>
-    <!-- prompt for city -->
-    <div id="userCity" class="row">
-        <p>What city are you in, <span id="citySpan"></span><br><small style="font-size: .25em;"><em>(This is for the weather service features.)</em></small></p>
-        <p id="city404" class="red lighten-1"></p>
-        <form class="col s12" id="cityForm">
-            <div class="input-field inline">
-                <input id="cityInput" type="text">
-                <!-- <input type="submit" class="waves-effect waves-light btn" value="Submit"> -->
-                <button type="submit" class="waves-effect waves-light btn teal darken-3"><i class="material-icons ">navigate_next</i>
-                </button>
-              </div>
+    <!-- prompt user for name  -->
+    <div id="getNameElement">
+        <h3>Hello there, what is your name?</h3>
+        <form id="getNameForm">
+            <input type="text" name="" id="getNameInput">
         </form>
     </div>
-    <div id="content">
-        <div class="container">
-            <!-- navbar -->
-
-            <header id="navbar" >
-                <div id="settings">
-                    <span id="hideOnClick"></span>
-
-                    <a href="#" id="settingsBtn"><i class="material-icons">settings</i></a>
-                    <a class="btn-floating btn-small teal lighten-1 pulse" id='editorDone' style="display: none;"><i class="material-icons">edit</i></a>
-                    <a class="btn-floating btn-small teal darken-2" id='editorDefault' style="display: none;">Default</a>
-
-                </div>
-
-                <div id="settingsDrop">
-                    <a href="#" id="editorMode">Editor Mode</a>
-                    <div id="setBackground">
-                        <a href="#" id="setBG">Set Background as Default</a>
-                        <span id="setBGnotif"></span>
-                        <a href="#" id="removeBG">Generate Random Backgrounds</a>
-                    </div>
-                    <a href="#" id="settingsName">Change Name</a>
-                    <a href="#" id="settingsCity">Change City</a>
-                    <ul id="showHide"><span>Show/Hide Elements</span> 
-                        <li><a href="#" id="showHideTime" class="time ">Time</a></li>
-                        <li><a href="#" id="showHideGreeting" class="greet">Greeting</a></li>
-                        <li><a href="#" id="showHideWeather" class="weather">Weather</a></li>
-                        <li><a href="#" id="showHideSearch" class="search">Search Bar</a></li>
-                        <li><a href="#" id="showHideTodo" class="todo">Todo List</a></li>
-                        <li><a href="#" id="showHideLinks" class="links">Quick Links</a></li>
-                    </ul>
-                </div>
-            </header>
-
-
-             <!-- display time -->
-            <div id="timeElement" class="mainElements time">
-                <p><!-- time() goes here --></p>
-            </div>
-
-            <!-- greeting -->
-            <div id="greetElement" class="mainElements greet">
-                <p id="greetText"><!-- greeting() goes here --></p>
-            </div>
-
-            <!-- weather -->
-            <div id="weatherElement" class="mainElements weather">
-                <p id="weatherCity"><!-- greeting() goes here --></p>
-                <div id="weatherInfoBox">   
-
-                    <p id="weatherTemp"></p>
-                    <div id="weatherConditionBox">
-                        <img src="" alt="" id="weatherConditionImg">
-                        <p id="weatherConditionText"></p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- search -->
-            <div id="searchElement" class="mainElements search">
-                <form action="" class="col s12" id="searchForm">
-                    <div class="row">
-                        <div class="input-field col s12">
-                          <input type="text" class="" placeholder="Google Search" id="searchInput">
-                          <i class="material-icons" id="searchIcon">search</i>
-                        </div>
-                      </div>
-                </form>
-            </div>
-
-            <!-- tasklist -->
-            <div id="taskElement" class="mainElements todo">
-                
-                <form action="" class="col s12" id="taskForm">
-                    
-                    <div class="row">
-                        
-                        <div class="input-field col s12">
-                            <h5>My Todo List</h5>
-                          <input type="text" class="" placeholder="Add Task" id="taskInput">
-                          <i class="material-icons" id="searchIcon">add</i>
-                        </div>
-                      </div>
-                </form>
-
-                <div class="card-action">
-                    <ul class="" id="taskList">
-                        <!-- <li class="listItem"><a  class="taskText">Task one test</a><a href="#" class="deleteTask secondary-content"><i class="material-icons">close</i></a></li> -->
-
-                    </ul>
-                </div>
-                <a href="#" id="clearBtn" class="waves-effect waves-light btn red">Clear All</a>
-            </div>
-
-            <!-- quickLinks -->
-            <div id="linksElement" class="mainElements links">
-                <ul id="links">
-                    <!-- <li><a href=""><i class="far fa-envelope"></i></a></li> -->
-                    <li><a href="https://mail.google.com/mail" id="gmail" ><i class="fab fa-google"></i></a></li>
-                    <li><a href="http://www.facebook.com"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="http://www.amazon.com"><i class="fab fa-amazon"></i></a></li>
-                    <li><a href="http://www.yahoo.com"><i class="fab fa-yahoo"></i></i></a></li>
-                    
-                    
-                </ul>
-            </div>
-
-
-
-
-            <!-- footer -->
-            <footer>
-                <!-- <div id="setBackground">
-                    <a href="#" id="setBG"><p>Set Background as Default</p></a>
-                    <a href="#" id="removeBG"><p>Generate new Background</p></a>
-                </div> -->
-                <p id="copyright">Designed and Developed by Paolo Bugarin. Copyright © 2021. All Rights Reserved.</p>
-            </footer>
-
-
+    <!-- prompt user for name  -->
+    <div id="getCityElement">
+        <h3>Please Enter a City Name to enable Weather services. <br><small>Providing this information will disable the app from accessing device's location API.</small></h3>
+        <form id="getCityForm">
+            <input type="text" name="" id="getCityInput">
+        </form>
+    </div>
+    <div id="clearSettingsModal">
+        <h3>Are you sure you want to delete all settings?</h3>
+        <div id="clearSettingsBtnContainer">
+            <a href="#" id="clearCancelBtn">Cancel</a>
+            <a href="#" id="clearConfirmBtn">Yes</a>
         </div>
     </div>
 
+    <div id="content">
+        <!-- timeElement -->
+        <div id="timeElement" class="mainElements">
+            <p id="timeText" class="mainElementText"> <!-- getTime function()--></p>
+        </div>
 
-    <script src="./script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <!-- greetElement -->
+        <div id="greetElement" class="mainElements">
+            <p id="greetText" class="mainElementText"><!-- greetUser function()--></p>
+            
+        </div>
+
+        <!-- weatherElement --openWeather API -->
+        <div id="weatherElement" class="mainElements">
+            
+            <p id="weatherText" class="mainElementText"></p>
+            <div id="weatherInfo">
+                <div id="weatherTemp"><!-- --></div>
+                <div id="weatherCondition">
+                    <img src="" alt="" id="weatherConditionImg">
+                    <p id="weatherConditionStatus"></p>
+                </div>
+
+            </div>
+        </div>
+        <!-- searchElement -->
+        <div id="searchElement" class="mainElements">
+            <form id="searchForm">
+                    <input type="text" class="" placeholder="Google Search" id="searchInput">
+                    <i class="material-icons" id="searchIcon">search</i>
+            </form>
+        </div>
+
+        <!-- todoElement -->
+        <div id="todoElement" class="mainElements">
+            <p id="todoText" class="mainElementText">My Todo List</p>
+            <form id="todoForm">
+                <input type="text" id="todoInput" placeholder="Add Todo">
+            </form>
+            <ul id="todoCollection">
+                <!-- <li class="listItem">
+                    <a class="listItemText" contenteditable="true" style="display: inline-block; width: 80%;">Task one</a>
+                    <div class="secondary-content">
+                        <a class="editBtn"><i class="material-icons">create</i></a>
+                        <a class="deleteBtn"><i class="material-icons">close</i></a>
+                    </div>
+                </li> -->
+            </ul>
+
+            <a href="#" id="clearBtn" class="">CLEAR ALL</a>
+        </div>
+
+            <!-- linksElement -->
+        <div id="linksElement" class="mainElements">
+
+            <div id="linksContainer">
+<!-- 
+                <a href="http://www.youtube.com" class="linkItem">
+                    <img src="https://www.youtube.com/s/desktop/a466a8fe/img/favicon_144x144.png" alt="" class="linkImg">
+                    <p class="linkText">How to putangina</p>
+                </a> 
+                <a href="http://www.youtube.com" class="linkItem">
+                    <img src="https://www.youtube.com/s/desktop/a466a8fe/img/favicon_144x144.png" alt="" class="linkImg">
+                    <p class="linkText">YouTube</p>
+                </a> 
+                <a href="http://www.youtube.com" class="linkItem">
+                    <img src="https://s2.googleusercontent.com/s2/favicons?domain_url=https://stackoverflow.com/questions/10282939/how-to-get-favicons-url-from-a-generic-webpage-in-javascript&size=72" alt="" class="linkImg">
+                    <p class="linkText">StackOverflow</p>
+                </a>  -->
+                <div id="addLinkContainer">
+                    <a href="#"><i class="material-icons" id="addLinkBtn">add</i></a>
+    
+                </div>
+            </div>
+        </div>
+            
+    </div>
+
+    <div id="editorBtnContainer">
+        <a class="btn-floating pulse" id="saveEditorBtn"><i class="material-icons">check</i></a>
+        <a class="btn-floating pulse" id="cancelEditorBtn"><i class="material-icons">close</i></a>
+        <a class="btn-floating pulse" id="defaultEditorBtn">Default</a>
+    </div>
+    <div id="settingsElement">
+        <a id="settingsBtn"><i class="material-icons">settings</i></a>
+        <div id="settingsOverlay"></div>
+        <div id="settingsContainer">
+            <!-- settingsList -->
+            <ul id="settingsList">
+                <li class="settingsItem"><a href="#" class="editorSetting">Editor Mode</a></li>
+                <li class="settingsItem"><a href="#" class="generalSetting">General</a></li>
+                <li class="settingsItem"><a href="#" class="backgroundSetting">Background</a></li>
+                <li class="settingsItem"><a href="#" class="hideUnhideSetting">Hide/Unhide Elements</a></li>
+                <li class="settingsItem"><a href="#" class="quickLinkSetting">Quick Links</a></li>
+                <li class="settingsItem"><a href="#" class="clearSetting">Clear All Settings</a></li>
+                <li class="settingsItem"><a href="#" class="aboutSetting">About</a></li>
+            </ul>
+            <!-- subsettings -->
+            <div class="subsettingsContainer">
+
+                <div id="EditorModeSubSetting" class="editorSetting subsettingsItem" style="display: none;">
+                    <p class="subsettingHeader">Editor Mode</p>
+                    <p class="subsettingContent">Editor Mode allows you to customize the position and size of the main elements to your desired preference.</p>
+                    <a href="#" id="editorModeBtn">Enter Editor Mode</a>
+
+                </div>
+
+                <div id="generalSubSetting" class="generalSetting subsettingsItem" style="display: initial;">
+                    <p class="subsettingHeader">General</p>
+                    <div class="subsettingList">
+
+                            <form id="generalSettingsForm"> 
+                                <label for="changeNameInput">Change Display Name</label>
+                                <input type="text" name="changeNameInput" id="changeNameInput" class="generalInput">
+
+                                <label for="changeBirthDateInput">Change Birthdate <small style="opacity: .7;">(Optional)</small></label>
+                                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="changeBirthDateInput" id="changeBirthDateInput" class="generalInput">
+
+                                <label for="setCityInput">Manually Set City Name <small style="opacity: .7;">(Optional)</small><small style="opacity: .7;"><br>(Enter a city if you prefer not to use your device's location for weather service feature.)</small></label>
+                                <input type="text" name="setCityInput" id="setCityInput" placeholder="City Name" class="generalInput">
+
+                                <a href="#" id="clearCityBtn">Delete City Name</a>
+                                <div class="formBtnContainer">
+                                    <p id="generalCancelBtn">Cancel</p>
+                                    <p id="generalSaveBtn" type="submit">Save Changes
+                                        <input type="submit">
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+
+                <div id="backgroundSubSetting" class="backgroundSetting subsettingsItem" style="display: none;">
+                    <p class="subsettingHeader">Background</p>
+                    <ul class="subsettingList">
+                        <li class="subsettingListItem" id="generateBGBtn">
+                            Generate Random Backgrounds
+                            <small><br> Select Category:</small>
+                            <ul id="BGCategories">
+                                <li>Wallpapers</li>
+                                <li>Nature</li>
+                                <li>Architecture</li>
+                                <li>Travel</li>
+                                <li>Technology</li>
+                                <li>Animals</li>
+                            </ul>
+                            
+                        </li>
+                        <li class="subsettingListItem" id="setBGBtn">Set Current Background as Default</li>
+
+                    </ul>
+                </div>
+
+                <div id="hideUnhideSubSetting" class="hideUnhideSetting subsettingsItem" style="display: none;">
+                    <p class="subsettingHeader">Hide/Unhide Elements</p>
+                    <ul class="subsettingList">
+                        <li class="subsettingListItem" value="timeElement">Time</li>    
+                        <li class="subsettingListItem" value="greetElement">Greeting</li>
+                        <li class="subsettingListItem" value="weatherElement">Weather</li>
+                        <li class="subsettingListItem" value="searchElement">Google Search</li>
+                        <li class="subsettingListItem" value="todoElement">Todo List</li>
+                        <li class="subsettingListItem" value="linksElement">Quick Links</li>
+                    </ul>
+                </div>
+
+                <div id="quickLinksSubSetting" class="quickLinkSetting subsettingsItem" style="display: none;">
+                    <p class="subsettingHeader">Quick Links</p>
+                    <form id="addQuickLinkForm">
+                        <label for="addQuickLinkInput">Add Link <small><em>(type or paste any valid URL to be bookmarked)</em></small></label>
+                        <input type="text" id="addQuickLinkInput" placeholder="https://www.example.com">    
+                    </form>
+                    <!-- <a href="#">Change Links Orientation</a> -->
+                    <p class="subsettingContent">Links:</p>
+                    <ul class="subsettingList" id="linksList">
+                        <!-- <li class="listItem">
+                            <a class="listItemText"><img src="https://s2.googleusercontent.com/s2/favicons?domain=https://www.youtube.com/">Youtubeasdasdasdasdasdasdasdasd</a>
+                            <div class="secondary-content">
+                                <a class="deleteBtn"><i class="material-icons">close</i></a>
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+
+                <div id="clearAllSubSetting" class="clearSetting subsettingsItem" style="display: none;">
+                    <p class="subsettingHeader">Clear All Settings</p>
+                    <p class="subsettingContent">This will remove and reset everything saved in the database including user information, saved background, todo items, quick links, and modified settings.</p>
+                    <a href="#" id="clearSettingsBtn">Clear All Settings</a>
+                </div>
+
+                <div id="AboutSubSetting" class="aboutSetting subsettingsItem" style="display: none;">
+                    <p class="subsettingHeader">About</p>
+                    <p class="subsettingContent">
+                        My CIS - 193 Finals Project
+                        <br>
+                        Frameworks and API used:
+                        
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <p>Designed and Developed by Paolo Bugarin. Copyright <sup>©</sup> 2021. All Rights Reserved.</p>
+    </footer>
+    <!-- <div id="modalElement">
+        <p id="modalText">Please enter a valid input.</p>
+    </div> -->
+    <!-- materialize.css -->
+    <script src="./script/materialize.min.js"></script>
+    <script src="./script/app.js"></script>
+    <script src="./script/todo.js"></script>
+    <script src="./script/settings.js"></script>
+    <script src="./script/links.js"></script>
 </body>
 </html>

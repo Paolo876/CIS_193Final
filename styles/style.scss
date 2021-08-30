@@ -1,0 +1,1053 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500&family=Source+Sans+Pro:wght@200;300;400&family=Questrial&family=Roboto:wght@100;300;400;500&display=swap');
+
+$primaryColor: #4db6ac;
+$darkColor: rgb(31, 31, 31);
+$lightColor: rgb(235, 235, 235);
+$interFont: 'Inter', sans-serif;
+$sourceSansFont: 'Source Sans Pro', sans-serif;
+$questrialFont: 'Questrial', sans-serif;
+$robotoFont: 'Roboto', sans-serif;
+
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+    :hover{
+        transition: .3s color ease-in-out; 
+        color: #f4f4f4;
+    }
+    :active{
+        opacity: .7;
+    }
+}
+
+#content {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+    font-family: $robotoFont;
+    position: relative;
+    width: 100%;
+}
+
+.mainElements{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: $lightColor;
+    width: fit-content;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    .editorOverlay{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        border: 1px dashed $primaryColor;
+        user-select: none;
+
+        .scaleUp, .scaleDown{
+            position: absolute;
+            height: 1.2em;
+            width: 1.2em;
+            top: .2em;
+            right: 0;
+            z-index: 6;
+            font-size: 1em;
+            text-align: center;
+            background-color: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6));
+            user-select: none;
+        }
+                    
+        .scaleDown{
+        right: 1.8rem;
+        }
+
+        .scaleUp i, .scaleDown i {
+        color: var(--primary-color);
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        color: $primaryColor;
+        opacity: .8;
+            &:hover{
+                opacity: 1;
+
+            }
+        }
+
+    }
+}
+.mainElementText{
+    line-height: 1.25em;
+}
+
+#timeElement{
+    top: 8%;
+    background: radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 70%);
+
+
+    #timeText{
+        cursor: pointer;
+        font-family: $interFont;
+        font-size: 8em;
+        font-weight: 400;
+        text-shadow: 0 0 10px rgba(141, 91, 91, 0.1);
+
+    }
+}
+
+
+#greetElement{
+    top: 25%;
+    background: radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 60%);
+    #greetText{
+        font-family: $sourceSansFont;
+        font-weight: 200;
+        font-size: 5em;
+        text-shadow: 0 0 10px rgba(0, 0, 0, .4);
+
+    }
+}
+
+#getNameElement, #getCityElement{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    height: 100vh;
+    width: 100%;
+    z-index: 6;
+    background: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.9));
+    flex-direction: column;
+    text-align: center;
+    color: $lightColor;
+    h3{
+        margin-top: 3em;        
+        font-family: $interFont;
+        font-size: 4em;
+        text-shadow: 0 0 10px rgba(0, 0, 0, .6);
+        line-height: 1.5em;
+        small{
+            font-size: .25em;
+            font-style: italic;
+            opacity: .5;
+        }
+
+    }
+    input{
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        color: $lightColor;
+        font-size: 5em;
+        height: 2em;
+        text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        border-bottom: none;
+        height: 100vh;
+        cursor: default;
+
+    }
+}
+
+#getCityElement{
+    z-index: 5;
+
+}
+#weatherElement {
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+    #weatherText {
+        
+        font-family: $interFont;
+        font-size: 1.2em;
+        font-weight: 300;
+
+    }
+
+    #weatherInfo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+        flex: auto;
+        text-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        #weatherTemp{
+            font-weight: 100;
+            font-size: 1.2em;
+            align-self: center;
+            padding: 0 .8em;
+            &:active{
+                opacity: 0;
+                color: $primaryColor;
+                transition: opacity .1s;
+            }
+        }
+
+        #weatherCondition {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: .8em;
+            position: relative;
+            &::after{
+                position: absolute;
+                content: '';
+                height: 80%;
+                top: 10%;
+                left: 0;
+                border-left: 1px solid rgba(204, 204, 204, 0.548);
+
+            }
+            #weatherConditionImg {
+                height: 4em;
+            }
+            #weatherConditionStatus{
+                font-weight: 100;
+                font-size: .8em;
+            }
+        }
+    }
+}
+
+
+#searchElement {
+    top: 55%;
+    width: 40em;
+    flex-direction: column;
+    position: relative;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .8);
+    justify-content: center;
+    #searchForm {
+        input {
+            font-family: $interFont;
+            padding-left: 1em;
+            color: $lightColor;
+            &:hover{
+                background: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1));
+            }
+            
+            &:focus{
+                outline: none;
+                background: linear-gradient(rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25));
+                opacity: 1;
+                border-left: none;
+                box-shadow: none;
+            }
+            &::placeholder{
+                opacity: .4;
+                font-weight: 500;
+                font-size: .9em;
+            }
+        }
+        i {
+            opacity: .9;
+            text-shadow: none;
+            position: absolute;
+            top: 25%;
+            right: .5em;
+        }
+    }
+}
+
+#todoElement {
+    top: 65%;
+    flex-direction: column;
+    background: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1));
+    text-align: left;
+    min-width: 22em;
+    padding: .5em;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .8);
+    bottom: 1;
+    #todoText {
+        font-family: $interFont;
+        margin-top: .8em;
+        margin-bottom: .4em;
+        font-size: 1.6em;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    }
+
+    #todoForm {
+        #todoInput {
+            color: $lightColor;
+            font-size: .8em;
+            font-weight: 500;
+            height: 3em;
+            font-family: $interFont;
+            padding-left: .8em;
+            margin-bottom: 2em;
+            opacity: .8;
+            &:hover{
+                background: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1));
+    
+            }
+            &:focus{
+                outline: none;
+                background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2));
+                opacity: 1;
+                border-left: none;
+                box-shadow: none;
+            }
+            &::placeholder{
+                opacity: .6;
+                font-weight: 500;
+            }
+        }
+    }
+
+    #todoCollection{
+
+        li{
+            font-family: $interFont;
+            align-items: center;
+            display: block;
+            position: relative;
+            width: 100%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+            .listItemText{
+                color: $lightColor;
+                font-size: .9em;
+                margin-top: .2em;
+                padding-left: 1em;
+                width: 80%;
+                display: inline-block;
+                line-height: 2em;
+            }
+            .secondary-content{
+                .editBtn{
+                    i{
+                        transform: scale(.85) translateY(20%);
+                        padding-right: .2em;
+
+                    }
+                }
+                .material-icons{
+                    transform: translateY(20%);
+                    color: $primaryColor;
+
+                }
+            }
+            &:last-child {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            } 
+        }
+    }
+
+    #clearBtn {
+        display: block;
+        margin-right: 0;
+        margin-left: auto;
+        margin-top: 2.4em;
+        padding: .6em 2.4em;
+        opacity: .9;
+        transform: scale(.85);
+        color: $lightColor;
+        text-align: center;
+        border-radius: 2px;
+        font-family: $interFont;
+        font-size: .8em;
+        background: #f44336;
+        &:hover{
+            transition: .3s opacity ease-in-out;
+            opacity: 1;
+        }
+        &:active{
+            transition: none;
+            opacity: .8;
+        }
+    }
+}
+// class toggle for finished todo
+.finishedTodo {
+    opacity: .6;
+    font-style: italic;
+    text-decoration: line-through;
+    transform: translateX(.25em);
+    transition: all .1s linear;
+    &:hover {
+        opacity: .7;
+    }
+}
+
+#linksElement {
+    flex-direction: row;
+    left: initial;
+    transform: translate(0, 0);
+    top: 0em;
+    right: 0em;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+
+
+
+    #linksContainer{
+        display: flex;
+        flex-direction: column;
+        .linkItem {
+            background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2));
+            border-radius: 10%;
+            flex-direction: column;
+            margin: .3em;
+            opacity: .75;
+            width: 4.8em;
+            height: 3.2em;
+            img {
+                margin-top: .2em;
+                height: 20px;
+                width: 20px;
+    
+            }
+            p {
+                font-family: $robotoFont;
+                font-size: .6em;
+                color: $lightColor;
+                padding: 0 .5em .2em .5em;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            &:hover{
+                opacity: 1;
+            }
+        }
+        #addLinkContainer {
+            margin-bottom: auto;
+            #addLinkBtn {
+                display: block;
+                color: $lightColor;
+                margin: .5em;
+                opacity: .5;
+                &:hover{
+                    opacity: 1;
+                }
+                &:active{
+                    color: $primaryColor;
+                }
+            }
+        }
+    
+    }
+
+
+
+}
+
+#editorBtnContainer{
+    display: none;
+    flex-direction: column;
+    gap: 2em;
+    padding: 1em;
+    position: absolute;
+    top: 0em;
+    left: 0em;
+    z-index: 4;
+    a{
+        transition: transform .3s ease-in-out;
+        transform: scale(.95);
+        opacity: .9;
+        color: $lightColor;
+        background-color: $primaryColor;
+        &:hover{
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        i{
+            color: $lightColor;
+        }
+    }
+    #defaultEditorBtn {
+        opacity: 1;
+        margin-top: 3em;
+        background-color:#ffa000;
+        font-size: .65em;
+        text-align: center;
+        // &:hover{
+        //      transform: scale(1.1);
+        // }
+    }
+}
+#settingsElement {
+    #settingsBtn {
+        position: absolute;
+        top: .5em;
+        left: .5em;
+        color: $lightColor;
+        opacity: .8;
+        transition: .5s all ease-in-out;
+        line-height: 1em;
+        z-index: 3;
+
+    }
+
+
+    #settingsContainer{
+        height: 26em;
+        display: none;
+        flex-direction: row;
+        position: absolute;
+        top: 2.6em;
+        z-index: 5;
+        left: 0;
+        opacity: 1;
+        background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+        text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        #settingsList {
+            border-right: 1px solid $darkColor;
+            opacity: .9;
+            margin: 1em;
+
+            .generalSetting{
+                font-weight: bold;
+            }
+            .settingsItem {
+
+                a{
+                    display: block;
+                    color: $lightColor;
+                    font-size: .95em;
+                    font-family: $questrialFont;
+                    opacity: .8;
+                    padding:  .3em 1em .3em .2em;
+                    &:hover{
+                        opacity: 1;
+                    }
+
+                }
+                
+                &:last-child{
+                    margin-top: 3em;
+                    margin-bottom: 2em;
+                }
+            }
+        }
+
+        .subsettingsContainer{
+            color: $lightColor;
+            font-family: $questrialFont;
+            height: auto;
+            width: 20em;
+            padding: .6em;
+            .subsettingHeader {
+                font-size: 1.1em;
+                font-weight: 600;
+                margin: 1em 0;
+            }
+            .subsettingContent {
+                font-size: .8em;
+                opacity: .8;
+                padding-right: .5em;
+                margin-top: .6em;
+                margin-bottom: 1em;
+                line-height: 1.8em;
+            }
+
+            #editorModeBtn {
+                display: block;
+                text-align: center;
+                width: 60%;
+                line-height: 2.5em;
+                margin: 3em auto 0 auto;
+                align-items: center;
+                justify-content: center;
+                background-color: $primaryColor;
+                color: $lightColor;
+                border-radius: .2em;
+                &:hover {
+                    filter: brightness(110%);
+    
+                }
+            }
+
+            .subsettingList {
+                margin-top: .8em;
+                font-size: .9em;
+                .subsettingListItem{
+                    // background-color: red;
+                    border-left: 1px solid transparent;
+                    padding-left: .8em;
+                }
+                form {
+                    position: relative;
+                    label {
+                        color: $lightColor;
+                        font-size: 1em;
+                        opacity: .8;
+                        display: block;
+                        padding-bottom:  .4em;
+                    }
+                    
+                    input {
+                        display: block;
+                        opacity: .4;
+                        background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+                        font-family: $interFont;
+                        padding-left: 1em;
+                        font-size: .9em;
+                        height: 1.6em;
+                        margin: 0 auto 1.2em 1em;
+                        width: 80%;
+                        color: $lightColor;
+                        &:hover{
+                            opacity: .8;
+                        }
+                        &:focus{
+                            opacity: 1;
+                        }
+                        &::placeholder{
+                            font-style: italic;
+                            opacity: .5;
+                        }
+                    }
+
+
+
+                    #clearCityBtn{
+                        font-family: $interFont;
+                        width: fit-content;
+                        margin-left: 1em;
+                        margin-bottom: 3em;
+                        height: 1.8em;
+                        font-size: .9em;
+                        line-height: 1em;
+                        border-radius: 2px;
+                        padding-left: 1em;
+                        padding-right: 1em;
+                        background: #f44336;
+                        opacity: .05;
+                    }
+
+
+                    .formBtnContainer {
+                        display: flex;
+                        margin: 1em 2.4em 0 6em;
+                        justify-content: space-between;
+                        align-items: flex-end;
+
+                        p{
+                            cursor: pointer;
+                            display: block;
+                            font-size: 1em;
+                            text-align: right;
+                            position: relative;
+                            padding: .5em 0;
+                            opacity: .7;
+                            line-height: 1em;
+                            border-bottom: 1px solid transparent;
+                            &:hover {
+                                border-bottom: 1px solid $primaryColor;
+                                opacity: 1;
+    
+                            }
+                            input{
+                                cursor: pointer;
+                                margin: 0;
+                                padding: 0;
+                                z-index: 5;
+                                opacity: 0;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                background-color: red;
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                    }
+
+                }
+                a {
+                    color: $lightColor;
+                    opacity: .7;
+                    padding: .5em 0;
+                    display: block;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+
+                p {
+                    margin-top: .2em;
+                    padding-left: .5em;
+                    font-size: .9em;
+                }
+                ul {
+                    padding-left: 1em;
+                    font-size: .9em;
+                    display: grid;
+                    grid-template-columns: repeat(2, auto);
+                    li {
+                        padding: .2em 0;
+                        color: $lightColor;
+                        opacity: .7;
+                        padding: .5em 0;
+                        display: block;
+                        cursor: pointer;
+                        &:hover {
+                            opacity: .9;
+                        }
+                    }
+                }
+                #setBGBtn {
+                    margin-top: 2em;
+                    cursor: pointer;
+                }
+
+
+            }
+
+            #hideUnhideSubSetting{
+                .subsettingListItem {
+                    color: $lightColor;
+                    opacity: .8;
+                    padding: .5em 0 .5em .8em;
+                    display: block;
+                    cursor: pointer;
+                    transition: transform .1s linear;
+                    &:hover {
+                        opacity: 1;
+                    }
+                    &:active{
+                        color: $primaryColor;
+                    }
+                }
+                .elementHidden {
+                    opacity: .4;
+                    font-style: italic;
+                    text-decoration: line-through;
+                    transform: translateX(.5em);
+                    transition: all .1s linear;
+
+                    &:hover {
+                        opacity: .5;
+                    }
+                } 
+            }
+
+            #quickLinksSubSetting{
+                // max-height: inherit;
+                #addQuickLinkForm {
+                    font-size: .9em;
+
+                    label {
+                        color: $lightColor;
+                        opacity: .8;
+                        display: block;
+                        padding-bottom:  .4em;
+                    }
+
+                    input{
+                        display: block;
+                        opacity: .4;
+                        background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+                        font-family: $interFont;
+                        padding-left: .5em;
+                        font-size: .9em;
+                        height: 2em;
+                        width: 90%;
+                        color: $lightColor;
+                        &:hover{
+                            opacity: .8;
+                        }
+                        &:focus{
+                            opacity: 1;
+                        }
+                        &::placeholder{
+                            font-style: italic;
+                            opacity: .5;
+                        }
+                    }
+                }
+                .subsettingContent{
+                    font-size: .9em;
+
+                    margin-bottom: .2em;
+                }
+                #linksList{
+                    overflow-y: auto;
+                    margin: auto;
+                    height: 16em;
+                    opacity: .9;
+                    li{
+                        height: min-content;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+
+                        &:last-child{
+                            border-bottom: none;
+                        }
+                        .listItemText {
+                            display: inline-block;
+                            width: 90%;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            padding: 0;
+
+                            img{
+                                height: 16px;
+                                width: 16px;
+                                margin-right: .4em;
+                                transform: translateY(20%);
+                            }
+
+                        }
+                        .secondary-content i {
+                            transform: translateY(20%);
+                            font-size: 1.4em;
+                            &:active{
+                                color: $primaryColor;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #clearAllSubSetting {
+                #clearSettingsBtn {
+                    display: block;
+                    text-align: center;
+                    width: 60%;
+                    line-height: 2.5em;
+                    margin: 3em auto 0 auto;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #f44336;
+                    color: $lightColor;
+                    border-radius: .2em;
+                    opacity: .8;
+                    &:hover {
+                        opacity: 1;
+        
+                    }
+                }
+            }
+        }
+    
+    }
+
+}
+#modalElement {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 7;
+    background: $primaryColor;
+    opacity: .9 !important;
+    padding: .5em 2em;
+    border-radius: .5em;
+    animation: modalMoveInAndOut .3s forwards , modalMoveInAndOut .3s reverse 2s forwards;
+    #modalText {
+        color: $lightColor;
+        font-size: 1.1em;
+        text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        font-family: $interFont;
+        font-weight: 300;
+    }
+
+}
+#modalOverlay{
+    position:  absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 7;
+}
+
+#settingsOverlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    display: none;
+}
+
+
+#clearSettingsModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    height: 100vh;
+    width: 100%;
+    z-index: 6;
+    background: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, .9));
+    flex-direction: column;
+    text-align: center;
+    color: $lightColor;
+    h3{
+        margin-top: 3em;        
+        font-family: $interFont;
+        font-size: 4em;
+        text-shadow: 0 0 10px rgba(0, 0, 0, .6);
+        line-height: 1.5em;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        gap: 10em;
+        a{
+            color: $lightColor;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            font-family: $questrialFont;
+            font-size: 1.6em;
+            margin-top: 5em;
+            padding: .6em 1em;
+            opacity: .8;
+
+            &:hover{
+                opacity: 1;
+                border-bottom: 1px solid $primaryColor;
+            }
+        }
+    }
+
+}
+
+footer {
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em,;
+    p{
+        opacity: .5;
+        color: $lightColor;
+        font-size: .7em;
+        font-family: $robotoFont;
+    }
+}
+
+
+
+// animation keyframes
+@keyframes delayFadeOut {
+    80%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes modalMoveInAndOut {
+    0%{
+        opacity: 0;
+        top: -20em;
+    }
+    50%{
+        opacity: 0;
+    }
+    75%{
+        opacity: .5;
+    }
+    100%{
+        top: .8em;
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes settingsMoveIn {
+    0%{
+        opacity: 0;
+        left: -20%;
+    }
+    50%{
+        opacity: 0;
+    }
+    75%{
+        opacity: .5;
+    }
+    100%{
+        left: .2em;
+        opacity: 1;    
+    }
+}
+
+@keyframes settingsMoveOut {
+    0%{
+        opacity: 1;
+        left: .2em;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        left: -20%;
+        opacity: 0;
+    } 
+}
+
+@keyframes displayNone {
+    0%{
+        display: initial;
+        background-color: pink;
+    }
+    100%{
+        display: none;
+        background-color: blue;
+    } 
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: .5em;
+  }
+  
+  /* Track */
+//   ::-webkit-scrollbar-track {
+//     background: $darkColor;
+//   }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3));
+  }

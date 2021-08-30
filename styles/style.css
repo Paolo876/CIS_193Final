@@ -1,0 +1,1345 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500&family=Source+Sans+Pro:wght@200;300;400&family=Questrial&family=Roboto:wght@100;300;400;500&display=swap");
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a :hover {
+  -webkit-transition: .3s color ease-in-out;
+  transition: .3s color ease-in-out;
+  color: #f4f4f4;
+}
+
+a :active {
+  opacity: .7;
+}
+
+#content {
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(black), to(black));
+  background: linear-gradient(black, black);
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  width: 100%;
+}
+
+.mainElements {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ebebeb;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  z-index: 2;
+}
+
+.mainElements .editorOverlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  border: 1px dashed #4db6ac;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.mainElements .editorOverlay .scaleUp, .mainElements .editorOverlay .scaleDown {
+  position: absolute;
+  height: 1.2em;
+  width: 1.2em;
+  top: .2em;
+  right: 0;
+  z-index: 6;
+  font-size: 1em;
+  text-align: center;
+  background-color: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.mainElements .editorOverlay .scaleDown {
+  right: 1.8rem;
+}
+
+.mainElements .editorOverlay .scaleUp i, .mainElements .editorOverlay .scaleDown i {
+  color: var(--primary-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: #4db6ac;
+  opacity: .8;
+}
+
+.mainElements .editorOverlay .scaleUp i:hover, .mainElements .editorOverlay .scaleDown i:hover {
+  opacity: 1;
+}
+
+.mainElementText {
+  line-height: 1.25em;
+}
+
+#timeElement {
+  top: 8%;
+  background: radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 70%);
+}
+
+#timeElement #timeText {
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 8em;
+  font-weight: 400;
+  text-shadow: 0 0 10px rgba(141, 91, 91, 0.1);
+}
+
+#greetElement {
+  top: 25%;
+  background: radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 60%);
+}
+
+#greetElement #greetText {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 200;
+  font-size: 5em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#getNameElement, #getCityElement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  height: 100vh;
+  width: 100%;
+  z-index: 6;
+  background: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0.9)));
+  background: linear-gradient(black, rgba(0, 0, 0, 0.9));
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  color: #ebebeb;
+}
+
+#getNameElement h3, #getCityElement h3 {
+  margin-top: 3em;
+  font-family: "Inter", sans-serif;
+  font-size: 4em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  line-height: 1.5em;
+}
+
+#getNameElement h3 small, #getCityElement h3 small {
+  font-size: .25em;
+  font-style: italic;
+  opacity: .5;
+}
+
+#getNameElement input, #getCityElement input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: #ebebeb;
+  font-size: 5em;
+  height: 2em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-bottom: none;
+  height: 100vh;
+  cursor: default;
+}
+
+#getCityElement {
+  z-index: 5;
+}
+
+#weatherElement {
+  top: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#weatherElement #weatherText {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+#weatherElement #weatherInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#weatherElement #weatherInfo #weatherTemp {
+  font-weight: 100;
+  font-size: 1.2em;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding: 0 .8em;
+}
+
+#weatherElement #weatherInfo #weatherTemp:active {
+  opacity: 0;
+  color: #4db6ac;
+  -webkit-transition: opacity .1s;
+  transition: opacity .1s;
+}
+
+#weatherElement #weatherInfo #weatherCondition {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: .8em;
+  position: relative;
+}
+
+#weatherElement #weatherInfo #weatherCondition::after {
+  position: absolute;
+  content: '';
+  height: 80%;
+  top: 10%;
+  left: 0;
+  border-left: 1px solid rgba(204, 204, 204, 0.548);
+}
+
+#weatherElement #weatherInfo #weatherCondition #weatherConditionImg {
+  height: 4em;
+}
+
+#weatherElement #weatherInfo #weatherCondition #weatherConditionStatus {
+  font-weight: 100;
+  font-size: .8em;
+}
+
+#searchElement {
+  top: 55%;
+  width: 40em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#searchElement #searchForm input {
+  font-family: "Inter", sans-serif;
+  padding-left: 1em;
+  color: #ebebeb;
+}
+
+#searchElement #searchForm input:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.1)));
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+#searchElement #searchForm input:focus {
+  outline: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
+  opacity: 1;
+  border-left: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#searchElement #searchForm input::-webkit-input-placeholder {
+  opacity: .4;
+  font-weight: 500;
+  font-size: .9em;
+}
+
+#searchElement #searchForm input:-ms-input-placeholder {
+  opacity: .4;
+  font-weight: 500;
+  font-size: .9em;
+}
+
+#searchElement #searchForm input::-ms-input-placeholder {
+  opacity: .4;
+  font-weight: 500;
+  font-size: .9em;
+}
+
+#searchElement #searchForm input::placeholder {
+  opacity: .4;
+  font-weight: 500;
+  font-size: .9em;
+}
+
+#searchElement #searchForm i {
+  opacity: .9;
+  text-shadow: none;
+  position: absolute;
+  top: 25%;
+  right: .5em;
+}
+
+#todoElement {
+  top: 65%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.1)));
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  text-align: left;
+  min-width: 22em;
+  padding: .5em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  bottom: 1;
+}
+
+#todoElement #todoText {
+  font-family: "Inter", sans-serif;
+  margin-top: .8em;
+  margin-bottom: .4em;
+  font-size: 1.6em;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+#todoElement #todoForm #todoInput {
+  color: #ebebeb;
+  font-size: .8em;
+  font-weight: 500;
+  height: 3em;
+  font-family: "Inter", sans-serif;
+  padding-left: .8em;
+  margin-bottom: 2em;
+  opacity: .8;
+}
+
+#todoElement #todoForm #todoInput:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.1)));
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+#todoElement #todoForm #todoInput:focus {
+  outline: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2)));
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  opacity: 1;
+  border-left: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#todoElement #todoForm #todoInput::-webkit-input-placeholder {
+  opacity: .6;
+  font-weight: 500;
+}
+
+#todoElement #todoForm #todoInput:-ms-input-placeholder {
+  opacity: .6;
+  font-weight: 500;
+}
+
+#todoElement #todoForm #todoInput::-ms-input-placeholder {
+  opacity: .6;
+  font-weight: 500;
+}
+
+#todoElement #todoForm #todoInput::placeholder {
+  opacity: .6;
+  font-weight: 500;
+}
+
+#todoElement #todoCollection li {
+  font-family: "Inter", sans-serif;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: block;
+  position: relative;
+  width: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#todoElement #todoCollection li .listItemText {
+  color: #ebebeb;
+  font-size: .9em;
+  margin-top: .2em;
+  padding-left: 1em;
+  width: 80%;
+  display: inline-block;
+  line-height: 2em;
+}
+
+#todoElement #todoCollection li .secondary-content .editBtn i {
+  -webkit-transform: scale(0.85) translateY(20%);
+          transform: scale(0.85) translateY(20%);
+  padding-right: .2em;
+}
+
+#todoElement #todoCollection li .secondary-content .material-icons {
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
+  color: #4db6ac;
+}
+
+#todoElement #todoCollection li:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#todoElement #clearBtn {
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
+  margin-top: 2.4em;
+  padding: .6em 2.4em;
+  opacity: .9;
+  -webkit-transform: scale(0.85);
+          transform: scale(0.85);
+  color: #ebebeb;
+  text-align: center;
+  border-radius: 2px;
+  font-family: "Inter", sans-serif;
+  font-size: .8em;
+  background: #f44336;
+}
+
+#todoElement #clearBtn:hover {
+  -webkit-transition: .3s opacity ease-in-out;
+  transition: .3s opacity ease-in-out;
+  opacity: 1;
+}
+
+#todoElement #clearBtn:active {
+  -webkit-transition: none;
+  transition: none;
+  opacity: .8;
+}
+
+.finishedTodo {
+  opacity: .6;
+  font-style: italic;
+  text-decoration: line-through;
+  -webkit-transform: translateX(0.25em);
+          transform: translateX(0.25em);
+  -webkit-transition: all .1s linear;
+  transition: all .1s linear;
+}
+
+.finishedTodo:hover {
+  opacity: .7;
+}
+
+#linksElement {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  left: initial;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  top: 0em;
+  right: 0em;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#linksElement #linksContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#linksElement #linksContainer .linkItem {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2)));
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  border-radius: 10%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: .3em;
+  opacity: .75;
+  width: 4.8em;
+  height: 3.2em;
+}
+
+#linksElement #linksContainer .linkItem img {
+  margin-top: .2em;
+  height: 20px;
+  width: 20px;
+}
+
+#linksElement #linksContainer .linkItem p {
+  font-family: "Roboto", sans-serif;
+  font-size: .6em;
+  color: #ebebeb;
+  padding: 0 .5em .2em .5em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#linksElement #linksContainer .linkItem:hover {
+  opacity: 1;
+}
+
+#linksElement #linksContainer #addLinkContainer {
+  margin-bottom: auto;
+}
+
+#linksElement #linksContainer #addLinkContainer #addLinkBtn {
+  display: block;
+  color: #ebebeb;
+  margin: .5em;
+  opacity: .5;
+}
+
+#linksElement #linksContainer #addLinkContainer #addLinkBtn:hover {
+  opacity: 1;
+}
+
+#linksElement #linksContainer #addLinkContainer #addLinkBtn:active {
+  color: #4db6ac;
+}
+
+#editorBtnContainer {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2em;
+  padding: 1em;
+  position: absolute;
+  top: 0em;
+  left: 0em;
+  z-index: 4;
+}
+
+#editorBtnContainer a {
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  transition: -webkit-transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  opacity: .9;
+  color: #ebebeb;
+  background-color: #4db6ac;
+}
+
+#editorBtnContainer a:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#editorBtnContainer a i {
+  color: #ebebeb;
+}
+
+#editorBtnContainer #defaultEditorBtn {
+  opacity: 1;
+  margin-top: 3em;
+  background-color: #ffa000;
+  font-size: .65em;
+  text-align: center;
+}
+
+#settingsElement #settingsBtn {
+  position: absolute;
+  top: .5em;
+  left: .5em;
+  color: #ebebeb;
+  opacity: .8;
+  -webkit-transition: .5s all ease-in-out;
+  transition: .5s all ease-in-out;
+  line-height: 1em;
+  z-index: 3;
+}
+
+#settingsElement #settingsContainer {
+  height: 26em;
+  display: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  top: 2.6em;
+  z-index: 5;
+  left: 0;
+  opacity: 1;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5)));
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#settingsElement #settingsContainer #settingsList {
+  border-right: 1px solid #1f1f1f;
+  opacity: .9;
+  margin: 1em;
+}
+
+#settingsElement #settingsContainer #settingsList .generalSetting {
+  font-weight: bold;
+}
+
+#settingsElement #settingsContainer #settingsList .settingsItem a {
+  display: block;
+  color: #ebebeb;
+  font-size: .95em;
+  font-family: "Questrial", sans-serif;
+  opacity: .8;
+  padding: .3em 1em .3em .2em;
+}
+
+#settingsElement #settingsContainer #settingsList .settingsItem a:hover {
+  opacity: 1;
+}
+
+#settingsElement #settingsContainer #settingsList .settingsItem:last-child {
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer {
+  color: #ebebeb;
+  font-family: "Questrial", sans-serif;
+  height: auto;
+  width: 20em;
+  padding: .6em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingHeader {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 1em 0;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingContent {
+  font-size: .8em;
+  opacity: .8;
+  padding-right: .5em;
+  margin-top: .6em;
+  margin-bottom: 1em;
+  line-height: 1.8em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #editorModeBtn {
+  display: block;
+  text-align: center;
+  width: 60%;
+  line-height: 2.5em;
+  margin: 3em auto 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #4db6ac;
+  color: #ebebeb;
+  border-radius: .2em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #editorModeBtn:hover {
+  -webkit-filter: brightness(110%);
+          filter: brightness(110%);
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList {
+  margin-top: .8em;
+  font-size: .9em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList .subsettingListItem {
+  border-left: 1px solid transparent;
+  padding-left: .8em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form {
+  position: relative;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form label {
+  color: #ebebeb;
+  font-size: 1em;
+  opacity: .8;
+  display: block;
+  padding-bottom: .4em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form input {
+  display: block;
+  opacity: .4;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5)));
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  font-family: "Inter", sans-serif;
+  padding-left: 1em;
+  font-size: .9em;
+  height: 1.6em;
+  margin: 0 auto 1.2em 1em;
+  width: 80%;
+  color: #ebebeb;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form input:hover {
+  opacity: .8;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form input:focus {
+  opacity: 1;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form input::-webkit-input-placeholder {
+  font-style: italic;
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form input:-ms-input-placeholder {
+  font-style: italic;
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form input::-ms-input-placeholder {
+  font-style: italic;
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form input::placeholder {
+  font-style: italic;
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form #clearCityBtn {
+  font-family: "Inter", sans-serif;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 1em;
+  margin-bottom: 3em;
+  height: 1.8em;
+  font-size: .9em;
+  line-height: 1em;
+  border-radius: 2px;
+  padding-left: 1em;
+  padding-right: 1em;
+  background: #f44336;
+  opacity: .05;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form .formBtnContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1em 2.4em 0 6em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form .formBtnContainer p {
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  text-align: right;
+  position: relative;
+  padding: .5em 0;
+  opacity: .7;
+  line-height: 1em;
+  border-bottom: 1px solid transparent;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form .formBtnContainer p:hover {
+  border-bottom: 1px solid #4db6ac;
+  opacity: 1;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList form .formBtnContainer p input {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  z-index: 5;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList a {
+  color: #ebebeb;
+  opacity: .7;
+  padding: .5em 0;
+  display: block;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList a:hover {
+  opacity: 1;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList p {
+  margin-top: .2em;
+  padding-left: .5em;
+  font-size: .9em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList ul {
+  padding-left: 1em;
+  font-size: .9em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList ul li {
+  padding: .2em 0;
+  color: #ebebeb;
+  opacity: .7;
+  padding: .5em 0;
+  display: block;
+  cursor: pointer;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList ul li:hover {
+  opacity: .9;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer .subsettingList #setBGBtn {
+  margin-top: 2em;
+  cursor: pointer;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #hideUnhideSubSetting .subsettingListItem {
+  color: #ebebeb;
+  opacity: .8;
+  padding: .5em 0 .5em .8em;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .1s linear;
+  transition: -webkit-transform .1s linear;
+  transition: transform .1s linear;
+  transition: transform .1s linear, -webkit-transform .1s linear;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #hideUnhideSubSetting .subsettingListItem:hover {
+  opacity: 1;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #hideUnhideSubSetting .subsettingListItem:active {
+  color: #4db6ac;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #hideUnhideSubSetting .elementHidden {
+  opacity: .4;
+  font-style: italic;
+  text-decoration: line-through;
+  -webkit-transform: translateX(0.5em);
+          transform: translateX(0.5em);
+  -webkit-transition: all .1s linear;
+  transition: all .1s linear;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #hideUnhideSubSetting .elementHidden:hover {
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm {
+  font-size: .9em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm label {
+  color: #ebebeb;
+  opacity: .8;
+  display: block;
+  padding-bottom: .4em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm input {
+  display: block;
+  opacity: .4;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5)));
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  font-family: "Inter", sans-serif;
+  padding-left: .5em;
+  font-size: .9em;
+  height: 2em;
+  width: 90%;
+  color: #ebebeb;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm input:hover {
+  opacity: .8;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm input:focus {
+  opacity: 1;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm input::-webkit-input-placeholder {
+  font-style: italic;
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm input:-ms-input-placeholder {
+  font-style: italic;
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm input::-ms-input-placeholder {
+  font-style: italic;
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #addQuickLinkForm input::placeholder {
+  font-style: italic;
+  opacity: .5;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting .subsettingContent {
+  font-size: .9em;
+  margin-bottom: .2em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #linksList {
+  overflow-y: auto;
+  margin: auto;
+  height: 16em;
+  opacity: .9;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #linksList li {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #linksList li:last-child {
+  border-bottom: none;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #linksList li .listItemText {
+  display: inline-block;
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #linksList li .listItemText img {
+  height: 16px;
+  width: 16px;
+  margin-right: .4em;
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #linksList li .secondary-content i {
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
+  font-size: 1.4em;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #quickLinksSubSetting #linksList li .secondary-content i:active {
+  color: #4db6ac;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #clearAllSubSetting #clearSettingsBtn {
+  display: block;
+  text-align: center;
+  width: 60%;
+  line-height: 2.5em;
+  margin: 3em auto 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #f44336;
+  color: #ebebeb;
+  border-radius: .2em;
+  opacity: .8;
+}
+
+#settingsElement #settingsContainer .subsettingsContainer #clearAllSubSetting #clearSettingsBtn:hover {
+  opacity: 1;
+}
+
+#modalElement {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  z-index: 7;
+  background: #4db6ac;
+  opacity: .9 !important;
+  padding: .5em 2em;
+  border-radius: .5em;
+  animation: modalMoveInAndOut .3s forwards , modalMoveInAndOut .3s reverse 2s forwards;
+}
+
+#modalElement #modalText {
+  color: #ebebeb;
+  font-size: 1.1em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+}
+
+#modalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 7;
+}
+
+#settingsOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  display: none;
+}
+
+#clearSettingsModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  height: 100vh;
+  width: 100%;
+  z-index: 6;
+  background: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0.9)));
+  background: linear-gradient(black, rgba(0, 0, 0, 0.9));
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  color: #ebebeb;
+}
+
+#clearSettingsModal h3 {
+  margin-top: 3em;
+  font-family: "Inter", sans-serif;
+  font-size: 4em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  line-height: 1.5em;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#clearSettingsModal div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10em;
+}
+
+#clearSettingsModal div a {
+  color: #ebebeb;
+  display: inline-block;
+  border-bottom: 1px solid transparent;
+  font-family: "Questrial", sans-serif;
+  font-size: 1.6em;
+  margin-top: 5em;
+  padding: .6em 1em;
+  opacity: .8;
+}
+
+#clearSettingsModal div a:hover {
+  opacity: 1;
+  border-bottom: 1px solid #4db6ac;
+}
+
+footer {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+}
+
+footer p {
+  opacity: .5;
+  color: #ebebeb;
+  font-size: .7em;
+  font-family: "Roboto", sans-serif;
+}
+
+@-webkit-keyframes delayFadeOut {
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes delayFadeOut {
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes modalMoveInAndOut {
+  0% {
+    opacity: 0;
+    top: -20em;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: .5;
+  }
+  100% {
+    top: .8em;
+    opacity: 1;
+  }
+}
+
+@keyframes modalMoveInAndOut {
+  0% {
+    opacity: 0;
+    top: -20em;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: .5;
+  }
+  100% {
+    top: .8em;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes settingsMoveIn {
+  0% {
+    opacity: 0;
+    left: -20%;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: .5;
+  }
+  100% {
+    left: .2em;
+    opacity: 1;
+  }
+}
+
+@keyframes settingsMoveIn {
+  0% {
+    opacity: 0;
+    left: -20%;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: .5;
+  }
+  100% {
+    left: .2em;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes settingsMoveOut {
+  0% {
+    opacity: 1;
+    left: .2em;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    left: -20%;
+    opacity: 0;
+  }
+}
+
+@keyframes settingsMoveOut {
+  0% {
+    opacity: 1;
+    left: .2em;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    left: -20%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes displayNone {
+  0% {
+    display: initial;
+    background-color: pink;
+  }
+  100% {
+    display: none;
+    background-color: blue;
+  }
+}
+
+@keyframes displayNone {
+  0% {
+    display: initial;
+    background-color: pink;
+  }
+  100% {
+    display: none;
+    background-color: blue;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: .5em;
+}
+
+/* Track */
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5)));
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3)));
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+}
+/*# sourceMappingURL=style.css.map */
